@@ -1,5 +1,5 @@
 const name = "mood",
-  age = 24,
+  age = 26,
   gender = "female";
 
 const sayHi = (name, age, gender?) => {
