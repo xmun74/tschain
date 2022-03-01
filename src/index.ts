@@ -75,15 +75,38 @@ const createNewBlock = (data: string): Block => {
 
 // console.log(createNewBlock("hello"), createNewBlock("bye bye")); //[genesisBlock]블록 1개만 가지므로 index가 둘다 1임
 
-// 블록유효성확인함수 = candidate후보블럭과 previous최근블럭 가져와서 비교
+// 해쉬얻기
+const getHashforBlock = (aBlock: Block): string =>
+  Block.calculateBlockHash(
+    aBlock.index,
+    aBlock.previousHash,
+    aBlock.data,
+    aBlock.timestamp
+  );
+
+// 블록검증 = candidate새블럭과 previous이전블럭 가져와서 비교
 const isBlockValid = (candidateBlock: Block, previousBlock: Block): boolean => {
   if (!Block.validateStructure(candidateBlock)) {
+    //데이터 구조 검증
     return false;
-  } else if(previousBlock.index + 1 !== candidateBlock.index){ //최근블록인덱스+1 와 후보인덱스랑 다르면 거짓.
+  } else if (previousBlock.index + 1 !== candidateBlock.index) {
+    //이전블록인덱스+1 와 새인덱스랑 다르면 거짓.
     return false;
-  }else if(previousBlock.hash !== candidateBlock.hash){
+  } else if (previousBlock.hash !== candidateBlock.hash) {
+    //이전해쉬가 새해쉬랑 다르면 거짓.
     return false;
-  }else if()
+  } else if (getHashforBlock(candidateBlock) !== candidateBlock.hash) {
+    //얻은해쉬계산했는데 새해쉬가 아닌 다른해쉬면 거짓.
+    return false;
+  } else {
+    return true;
+  }
+};
+
+const addBlock = (candidateBlock: Block): void => {
+  if (isBlockValid(candidateBlock, getLatestBlock())) {
+    blockchain.push(candidateBlock);
+  }
 };
 
 export {};
