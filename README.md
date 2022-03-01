@@ -35,6 +35,8 @@ Learning Typescript by making a Blockchain with it
 7. `npx tsc` npx tsc하는 이유: node.js는 ts이해 못하기때문에 js코드로 컴파일 해야함
 8. `npm start`
 
+---
+
 ### watch모드로 변경 : src(ts파일) 변경시마다 dist(컴파일된js파일)도 변경됨
 
 1. TSLint 패키지 설치
@@ -56,9 +58,17 @@ Learning Typescript by making a Blockchain with it
 "include": ["src/**/*"], //컴파일할 파일
 ```
 
-5. .gitignore 파일에 dist추가
-   // # dotenv environment variables file
+5. .gitignore 파일에 dist추가  
+    // # dotenv environment variables file
+   .env
+   .env.test
+   dist //추가
 
-.env
-.env.test
-dist //추가
+---
+
+### interface
+
+- interface는 ts에서만 작동.
+- 오브젝트의 data type 정의할 수 있다.
+
+---
