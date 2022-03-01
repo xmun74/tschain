@@ -124,3 +124,42 @@ console.log(sayHi(lynn));
 export {};
 
 ```
+
+### blockchain
+
+- 블록타입만 블록배열에 추가됨. 다른 타입은 추가안됨. 원치 않는 것 푸쉬안되게 해줌
+- 많은 함수과 type이 있을 땐 ts가 편함
+
+```js
+//blockchain
+class Block {
+  public index: number;
+  public hash: string;
+  public previousHash: string;
+  public data: string;
+  public timestamp: number;
+  constructor(
+    index: number,
+    hash: string,
+    previousHash: string,
+    data: string,
+    timestamp: number
+  ) {
+    this.index = index;
+    this.hash = hash;
+    this.previousHash = previousHash;
+    this.data = data;
+    this.timestamp = timestamp;
+  }
+}
+
+const genesisBlock: Block = new Block(0, "2020202002020", "", "Hi", 123456);
+//       :Block 데이터타입 = 새블록 생성()
+let blockchain: [Block] = [genesisBlock];
+// 블록체인 : Block의 array 타입 = 새블록array
+
+console.log(blockchain);
+
+export {};
+
+```
