@@ -1,6 +1,6 @@
 # tschain
 
-Learning Typescript by making a Blockchain with it
+Learning Typescript by making a Blockchain with it <br><br><br><br><br>
 
 ### Setting
 
@@ -71,4 +71,56 @@ Learning Typescript by making a Blockchain with it
 - interface는 ts에서만 작동.
 - 오브젝트의 data type 정의할 수 있다.
 
+```js
+interface Human {
+  //data type정의
+  name: string;
+  age: number;
+  gender: string;
+}
+
+const person = {
+  name: "coco",
+  age: 22,
+  gender: "male",
+};
+
+const sayHi = (person: Human): string => {
+  return `Hello ${person.name}, you are ${person.age}, you are a ${person.gender}~!`;
+};
+
+console.log(sayHi(person));
+
+export {};
+```
+
 ---
+
+### Class : js에서 interface를 쓰고 싶을때
+
+- class가 어떤 속성들을 가지는 지 선언해야함 (js와 달리 ts에선 속성선언해야함)
+
+```js
+class Human {
+  public name: string; //name이란 이름의 public속성 선언
+  public age: number;
+  public gender: string;
+  constructor(name: string, age: number, gender?: string) {
+    //생성자 :class로부터 객체만들때마다 호출되는 메소드
+    this.name = name; //class의 name은 = 생성자의 name과 같다고 정의
+    this.age = age;
+    this.gender = gender;
+  }
+}
+
+const lynn = new Human("Lynn", 18, "female");
+
+const sayHi = (person: Human): string => {
+  return `Hello ${person.name}, you are ${person.age}, you are a ${person.gender}~!`;
+};
+
+console.log(sayHi(lynn));
+
+export {};
+
+```
