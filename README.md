@@ -134,7 +134,7 @@ export {};
 ### blockchain
 
 - 블록타입만 블록배열에 추가됨. 다른 타입은 추가안됨. 원치 않는 것 푸쉬안되게 해줌
-- 많은 함수과 type이 있을 땐 ts가 편함
+- 많은 함수리턴type과 함수인자type이 있을 땐 ts가 편함
 
 ```js
 //blockchain
@@ -176,11 +176,10 @@ export {};
 
 ### Create Block
 
-- js에서 Hash함수 통해 암호화하게 해주는 패키지
 - Hash : 모든속성을 문자열로 결합한 것
-- class 내부에서 함수작성하려면 `static` 함수 사용하면 된다.
+- `static` 함수 사용 : class 내부에서 함수작성할때 사용.
 
-1. `npm i crypto-js`
+1. `npm i crypto-js` : js에서 Hash함수 통해 암호화하게 해주는 패키지
 
 ```js
 import * as CryptoJS from "crypto-js"; // import하기
@@ -323,3 +322,22 @@ export {};
 2. 블록 검증
 3. 해쉬 얻기
 4. 블록 추가
+5. 테스트하면 각블록에 previoushash 이전해쉬까지 다 잘 연결돼있음
+
+```js
+// 새블럭 추가 후 테스트하기
+createNewBlock("second block");
+createNewBlock("third block");
+createNewBlock("fourth block");
+console.log(blockchain);
+```
+
+![](https://images.velog.io/images/xmun74/post/253a7e85-946b-489c-800b-44642764e706/image.png)
+
+### TS
+
+- React, Redux, GraphQL, express, node.js 일할때 좋음
+- static 함수로 class내부에 함수사용 가능
+- 함수인자의 data type과 함수리턴 type을 체크할 수 있음
+- interface와 class로 속성 선언하기
+  <br><br><br><br>

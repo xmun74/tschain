@@ -70,6 +70,8 @@ const createNewBlock = (data: string): Block => {
     data,
     newTimestamp
   );
+
+  addBlock(newBlock);
   return newBlock;
 };
 
@@ -92,7 +94,7 @@ const isBlockValid = (candidateBlock: Block, previousBlock: Block): boolean => {
   } else if (previousBlock.index + 1 !== candidateBlock.index) {
     //이전블록인덱스+1 와 새인덱스랑 다르면 거짓.
     return false;
-  } else if (previousBlock.hash !== candidateBlock.hash) {
+  } else if (previousBlock.hash !== candidateBlock.previousHash) {
     //이전해쉬가 새해쉬랑 다르면 거짓.
     return false;
   } else if (getHashforBlock(candidateBlock) !== candidateBlock.hash) {
@@ -108,5 +110,10 @@ const addBlock = (candidateBlock: Block): void => {
     blockchain.push(candidateBlock);
   }
 };
+
+createNewBlock("second block");
+createNewBlock("third block");
+createNewBlock("fourth block");
+console.log(blockchain);
 
 export {};
