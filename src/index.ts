@@ -1,15 +1,9 @@
 import * as CryptoJS from "crypto-js";
 
 class Block {
-  public index: number;
-  public hash: string;
-  public previousHash: string;
-  public data: string;
-  public timestamp: number;
-
+  // static없이 그냥 함수쓰면 : 블록생성한 다음에만 사용가능함
+  // static : 블록생선 전에도 사용가능. class안에 생성가능.
   static calculateBlockHash = (
-    // static없이 그냥 함수쓰면 : 블록생성한 다음에만 사용가능함
-    // static : 블록생선 전에도 사용가능. class안에 생성가능.
     index: number,
     previousHash: string,
     data: string,
@@ -17,6 +11,20 @@ class Block {
   ): string =>
     CryptoJS.SHA256(index + previousHash + timestamp + data).toString();
   // => 리턴값(합칠 속성).문자열로변환
+
+  // 구조가 유효한지 boolean으로 확인하는 함수 / data type이 동일한 구조인지 확인
+  static validateStructure = (aBlock: Block): boolean =>
+    typeof aBlock.index === "number" &&
+    typeof aBlock.hash === "string" &&
+    typeof aBlock.previousHash === "string" &&
+    typeof aBlock.data === "string" &&
+    typeof aBlock.timestamp === "number";
+
+  public index: number;
+  public hash: string;
+  public previousHash: string;
+  public data: string;
+  public timestamp: number;
 
   constructor(
     index: number,
@@ -65,6 +73,17 @@ const createNewBlock = (data: string): Block => {
   return newBlock;
 };
 
-console.log(createNewBlock("hello"), createNewBlock("bye bye")); //[genesisBlock]블록 1개만 가지므로 index가 둘다 1임
+// console.log(createNewBlock("hello"), createNewBlock("bye bye")); //[genesisBlock]블록 1개만 가지므로 index가 둘다 1임
+
+// 블록유효성확인함수 = candidate후보블럭과 previous최근블럭 가져와서 비교
+const isBlockValid = (candidateBlock: Block, previousBlock: Block): boolean => {
+  if (!Block.validateStructure(candidateBlock)) {
+    return false;
+  } else if(previousBlock.index + 1 !== candidateBlock.index){ //최근블록인덱스+1 와 후보인덱스랑 다르면 거짓.
+    return false;
+  }else if(previousBlock.hash !== candidateBlock.hash){
+    return false;
+  }else if()
+};
 
 export {};
