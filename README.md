@@ -2,6 +2,15 @@
 
 Learning Typescript by making a Blockchain with it <br><br><br><br><br>
 
+### TS
+
+- React, Redux, GraphQL, express, node.js 일할때 좋음
+- static 함수로 class 내부에 함수사용 가능
+- (함수인자의 data type)과 (함수리턴 type)을 체크할 수 있음
+- interface와 class로 속성 선언하기
+- blockchain 만들기 : 속성담은 블록배열
+  <br><br><br><br>
+
 ### Setting
 
 1. `git remote add origin 주소` `git pull origin master --allow-unrelated-histories` 깃헙과 연결
@@ -130,6 +139,8 @@ console.log(sayHi(lynn));
 export {};
 
 ```
+
+<br><br><br><br>
 
 ### blockchain
 
@@ -333,11 +344,3 @@ console.log(blockchain);
 ```
 
 ![](https://images.velog.io/images/xmun74/post/253a7e85-946b-489c-800b-44642764e706/image.png)
-
-### TS
-
-- React, Redux, GraphQL, express, node.js 일할때 좋음
-- static 함수로 class내부에 함수사용 가능
-- 함수인자의 data type과 함수리턴 type을 체크할 수 있음
-- interface와 class로 속성 선언하기
-  <br><br><br><br>
